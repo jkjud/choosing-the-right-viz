@@ -1,0 +1,25 @@
+relationship AutoDetected_08d390e7-c946-4509-a67a-1d8991b8e829
+	fromColumn: dimCM010.case_type_id
+	toColumn: dimCasetype.case_type_id
+
+relationship AutoDetected_b45ed0b1-a396-4b39-b40b-c0bf5c15a438
+	fromColumn: fctCase.case_type_id
+	toColumn: dimCasetype.case_type_id
+
+relationship AutoDetected_b121e7d9-a8a2-4057-a237-9bfbf0b3644c
+	isActive: false
+	fromColumn: fctCase.cm010_id
+	toColumn: dimCM010.cm010_id
+
+relationship AutoDetected_6e3e9146-37be-45b3-a690-97a8d3eb8f8e
+	fromColumn: dimLocation.court_id
+	toColumn: dimCourt.court_id
+
+relationship AutoDetected_340de69b-e915-4fa6-8290-74bbb988c0e9
+	fromColumn: fctCase.court_id
+	toColumn: dimCourt.court_id
+
+relationship AutoDetected_6e579cd6-f0d4-483a-9233-85850c38bcae
+	isActive: false
+	fromColumn: fctCase.location_id
+	toColumn: dimLocation.location_id

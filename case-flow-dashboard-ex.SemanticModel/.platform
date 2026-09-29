@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "case-flow-dashboard-ex"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "74a45643-2c1d-4939-b620-6982437ff9bf"
+  }
+}

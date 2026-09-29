@@ -1,0 +1,221 @@
+table fctCase
+	lineageTag: 5d3fa713-24ea-4b77-80c5-40994761c702
+
+	column case_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 711f49a0-3887-4d62-b127-0d381f16348d
+		summarizeBy: sum
+		sourceColumn: case_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_number
+		dataType: string
+		lineageTag: d9fba586-3162-4652-93b1-349102edee8e
+		summarizeBy: none
+		sourceColumn: case_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column court_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 86ca54a6-0cd8-4eb4-8a65-660c71982e8a
+		summarizeBy: none
+		sourceColumn: court_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c09bb93-096e-4b97-b8c9-89b9a212c8e1
+		summarizeBy: sum
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a8580b2a-d823-4b97-915f-dc9cf5cc76bc
+		summarizeBy: none
+		sourceColumn: case_type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cm010_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0fc46bae-7db4-480c-993a-ebe95bb64971
+		summarizeBy: sum
+		sourceColumn: cm010_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_track
+		dataType: string
+		lineageTag: 322caf2d-b791-4601-977b-ed6178848d77
+		summarizeBy: none
+		sourceColumn: case_track
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 08e95ec8-4205-4a3d-8455-f40f2efed941
+		summarizeBy: none
+		sourceColumn: filing_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column disposition_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 83790c9d-63ca-4346-a218-d43a74535686
+		summarizeBy: none
+		sourceColumn: disposition_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column is_pending
+		dataType: int64
+		formatString: 0
+		lineageTag: a45ff6e0-f73f-4bcf-a29d-a61931ffd069
+		summarizeBy: sum
+		sourceColumn: is_pending
+
+		annotation SummarizationSetBy = Automatic
+
+	column disposition_stage
+		dataType: string
+		lineageTag: 1939644b-41b8-4287-9c3a-971ab24688da
+		summarizeBy: none
+		sourceColumn: disposition_stage
+
+		annotation SummarizationSetBy = Automatic
+
+	column days_to_disp_net
+		dataType: int64
+		formatString: 0
+		lineageTag: f70620a9-6871-4320-ab4c-030224ab3d32
+		summarizeBy: sum
+		sourceColumn: days_to_disp_net
+
+		annotation SummarizationSetBy = Automatic
+
+	column within_t1
+		dataType: int64
+		formatString: 0
+		lineageTag: c04efc4e-a733-420d-9ebe-07d0a1a6963b
+		summarizeBy: sum
+		sourceColumn: within_t1
+
+		annotation SummarizationSetBy = Automatic
+
+	column within_t2
+		dataType: int64
+		formatString: 0
+		lineageTag: a362cedb-80b4-49a7-b8fc-5825d1716de2
+		summarizeBy: sum
+		sourceColumn: within_t2
+
+		annotation SummarizationSetBy = Automatic
+
+	column within_t3
+		dataType: int64
+		formatString: 0
+		lineageTag: 549d05d9-c623-45bb-99d8-b79e525282a0
+		summarizeBy: sum
+		sourceColumn: within_t3
+
+		annotation SummarizationSetBy = Automatic
+
+	column excluded_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 0852bdcf-779b-4e0e-bbbc-b47785570a60
+		summarizeBy: sum
+		sourceColumn: excluded_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column stay_reason
+		dataType: string
+		lineageTag: ee9e5039-d13e-406b-8d99-debeaa969cfa
+		summarizeBy: none
+		sourceColumn: stay_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column exceptional
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fa95ffe-cbd3-44c0-9c95-cd07b3624cce
+		summarizeBy: sum
+		sourceColumn: exceptional
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_days_gross
+		dataType: string
+		lineageTag: 811e1db4-c935-44cb-b9d1-8e3b600f66d5
+		summarizeBy: none
+		sourceColumn: age_days_gross
+
+		annotation SummarizationSetBy = Automatic
+
+	column age_days_net
+		dataType: string
+		lineageTag: 63f1455c-4ce9-45c6-9d5f-f0295d518af1
+		summarizeBy: none
+		sourceColumn: age_days_net
+
+		annotation SummarizationSetBy = Automatic
+
+	column past_24mo_goal
+		dataType: int64
+		formatString: 0
+		lineageTag: f6d6bfd3-e074-4b86-b747-d954d30800e5
+		summarizeBy: sum
+		sourceColumn: past_24mo_goal
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_event_date
+		dataType: string
+		lineageTag: b21632b2-c543-426e-959e-2e0fb5031467
+		summarizeBy: none
+		sourceColumn: next_event_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_event_type
+		dataType: string
+		lineageTag: a966d0ee-d044-4848-9104-de4d8382a140
+		summarizeBy: none
+		sourceColumn: next_event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fctCase = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_fctCase csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="fctCase.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_fctCase csv1",[Delimiter=",", Columns=23, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"case_id", Int64.Type}, {"case_number", type text}, {"court_id", Int64.Type}, {"location_id", Int64.Type}, {"case_type_id", Int64.Type}, {"cm010_id", Int64.Type}, {"case_track", type text}, {"filing_date", type date}, {"disposition_date", type date}, {"is_pending", Int64.Type}, {"disposition_stage", type text}, {"days_to_disp_net", Int64.Type}, {"within_t1", Int64.Type}, {"within_t2", Int64.Type}, {"within_t3", Int64.Type}, {"excluded_days", Int64.Type}, {"stay_reason", type text}, {"exceptional", Int64.Type}, {"age_days_gross", type text}, {"age_days_net", type text}, {"past_24mo_goal", Int64.Type}, {"next_event_date", type text}, {"next_event_type", type text}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

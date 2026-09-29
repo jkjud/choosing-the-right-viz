@@ -1,0 +1,61 @@
+table dimCourt
+	lineageTag: 03f8e5a0-db8b-4f03-8847-367bfe2967b2
+
+	column court_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e3fedaf6-76e9-4885-9027-4557edcf329c
+		summarizeBy: none
+		sourceColumn: court_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column court_code
+		dataType: string
+		lineageTag: 0d3f1c15-bc0d-4b20-b33f-f2bc64668f65
+		summarizeBy: none
+		sourceColumn: court_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_locations
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b9222b1-0eb8-4155-b27b-1a0b3f1921fd
+		summarizeBy: sum
+		sourceColumn: n_locations
+
+		annotation SummarizationSetBy = Automatic
+
+	column peer_cluster
+		dataType: int64
+		formatString: 0
+		lineageTag: 996feee8-4d42-4ed7-aa03-ff3e397ab9bf
+		summarizeBy: sum
+		sourceColumn: peer_cluster
+
+		annotation SummarizationSetBy = Automatic
+
+	column court_name
+		dataType: string
+		lineageTag: 623b18da-6284-4b6a-9fc8-05b4d23aab01
+		summarizeBy: none
+		sourceColumn: court_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimCourt = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimCourt csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="dimCourt.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimCourt csv1",[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"court_id", Int64.Type}, {"court_code", type text}, {"n_locations", Int64.Type}, {"peer_cluster", Int64.Type}, {"court_name", type text}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

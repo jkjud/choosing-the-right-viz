@@ -1,0 +1,74 @@
+table dimDate
+	lineageTag: 0d5173aa-7c4e-4532-b222-6ab9dce48693
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 21b47956-85d7-4f8b-a1a9-4114a36cf481
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 29124d41-bf39-4b50-b294-c3d8bca24eab
+		summarizeBy: none
+		sourceColumn: month_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column month_name
+		dataType: string
+		lineageTag: 50fe18ce-8a9e-464d-b0ca-223f22fbd02d
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_month
+		dataType: int64
+		formatString: 0
+		lineageTag: 92b6bc56-28fc-406f-af8f-d6724f194d91
+		summarizeBy: sum
+		sourceColumn: fy_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: string
+		lineageTag: 1504d3d2-35d6-4845-9e1e-c35476f9e597
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_end_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 592acb9a-1d3d-41a2-b37e-08050b4e9198
+		summarizeBy: sum
+		sourceColumn: fy_end_year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimDate = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimDate csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="dimDate.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimDate csv1",[Delimiter=",", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"date", type date}, {"month_start", type date}, {"month_name", type text}, {"fy_month", Int64.Type}, {"fiscal_year", type text}, {"fy_end_year", Int64.Type}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

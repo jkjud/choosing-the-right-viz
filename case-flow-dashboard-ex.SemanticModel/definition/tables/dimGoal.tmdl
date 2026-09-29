@@ -1,0 +1,62 @@
+table dimGoal
+	lineageTag: 3fc0556a-68fa-4fad-b51b-d5ceaa4f64dc
+
+	column case_group
+		dataType: string
+		lineageTag: 5ad6a8b6-8943-472d-ac25-1b7474fd6f32
+		summarizeBy: none
+		sourceColumn: case_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column tier
+		dataType: int64
+		formatString: 0
+		lineageTag: 64ec85c6-6a6d-4336-81a5-c2053dcd4870
+		summarizeBy: sum
+		sourceColumn: tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column window_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b04c159-f352-4880-b47c-892a9364be6c
+		summarizeBy: sum
+		sourceColumn: window_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column window_label
+		dataType: string
+		lineageTag: 6753f3d7-f142-4afc-b6c9-62ff6728b36b
+		summarizeBy: none
+		sourceColumn: window_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_pct
+		dataType: double
+		lineageTag: 42a903ad-ad38-4eb3-8a2f-daeb2d5a16bb
+		summarizeBy: sum
+		sourceColumn: target_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dimGoal = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimGoal csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="dimGoal.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimGoal csv1",[Delimiter=",", Columns=5, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"case_group", type text}, {"tier", Int64.Type}, {"window_days", Int64.Type}, {"window_label", type text}, {"target_pct", type number}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

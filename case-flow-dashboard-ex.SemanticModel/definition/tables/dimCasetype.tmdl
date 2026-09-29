@@ -1,0 +1,123 @@
+table dimCasetype
+	lineageTag: 373a69f7-44a8-45c4-a372-5890674442f5
+
+	column case_type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: b669360f-df1b-4cd9-b458-0dbf36f993a2
+		summarizeBy: none
+		sourceColumn: case_type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_type
+		dataType: string
+		lineageTag: d2103177-1d40-4809-b250-cd61773b7aa6
+		summarizeBy: none
+		sourceColumn: case_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_group
+		dataType: string
+		lineageTag: 5bf7a1cc-6d6e-4ac3-a355-603f5e14d48b
+		summarizeBy: none
+		sourceColumn: case_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column t1_window_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d5530d8-12cf-4cc1-851a-81e98fefeb7a
+		summarizeBy: sum
+		sourceColumn: t1_window_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column t2_window_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 0dbcdaf1-bdca-4aa6-8862-59a48e8d23ad
+		summarizeBy: sum
+		sourceColumn: t2_window_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column t3_window_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 36fb3e52-aa8b-43f3-9ddc-8db70f099f75
+		summarizeBy: sum
+		sourceColumn: t3_window_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column t1_window_label
+		dataType: string
+		lineageTag: 988dbeb4-f626-4da0-bb49-8bc8345ba4bb
+		summarizeBy: none
+		sourceColumn: t1_window_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column t2_window_label
+		dataType: string
+		lineageTag: 3cb0e40f-b27e-431e-a3ea-9c4b0f282b38
+		summarizeBy: none
+		sourceColumn: t2_window_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column t3_window_label
+		dataType: string
+		lineageTag: fde03390-9f0a-46db-b8f6-915af7d00b63
+		summarizeBy: none
+		sourceColumn: t3_window_label
+
+		annotation SummarizationSetBy = Automatic
+
+	column t1_target_pct
+		dataType: double
+		lineageTag: 4c1ca32e-54b7-4734-bc2b-4d1a64a8179e
+		summarizeBy: sum
+		sourceColumn: t1_target_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column t2_target_pct
+		dataType: double
+		lineageTag: e798b786-7bc9-4e00-9712-1ea5a7ef0a34
+		summarizeBy: sum
+		sourceColumn: t2_target_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column t3_target_pct
+		dataType: int64
+		formatString: 0
+		lineageTag: dad56d30-3ee2-4587-970c-81358893670b
+		summarizeBy: sum
+		sourceColumn: t3_target_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimCasetype = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimCasetype csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="dimCasetype.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimCasetype csv1",[Delimiter=",", Columns=12, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"case_type_id", Int64.Type}, {"case_type", type text}, {"case_group", type text}, {"t1_window_days", Int64.Type}, {"t2_window_days", Int64.Type}, {"t3_window_days", Int64.Type}, {"t1_window_label", type text}, {"t2_window_label", type text}, {"t3_window_label", type text}, {"t1_target_pct", type number}, {"t2_target_pct", type number}, {"t3_target_pct", Int64.Type}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

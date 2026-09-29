@@ -1,0 +1,44 @@
+table dimLocation
+	lineageTag: cc873c44-9237-46a0-a430-a347d14473dc
+
+	column location_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bd8e2a0-b92d-498f-bad3-3390e26a6dfd
+		summarizeBy: sum
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column court_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f7880ad-45a4-408e-97e6-11e33f715ee4
+		summarizeBy: none
+		sourceColumn: court_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_name
+		dataType: string
+		lineageTag: bd190ea1-e346-436a-95bb-071ce8507742
+		summarizeBy: none
+		sourceColumn: location_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimLocation = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimLocation csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="dimLocation.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimLocation csv1",[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"location_id", Int64.Type}, {"court_id", Int64.Type}, {"location_name", type text}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,65 @@
+table 'data (2)'
+	lineageTag: 00fdabe2-2b6f-4b86-ab37-5093eaac76c8
+
+	column Name
+		dataType: string
+		lineageTag: e3d2ddcb-24ab-46cf-bd21-bcbafc008ddf
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Extension
+		dataType: string
+		lineageTag: b746b046-8b2c-4c6f-b169-2486e6823c01
+		summarizeBy: none
+		sourceColumn: Extension
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date accessed'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5e8b46a7-8779-4e0c-80cb-c83ff21a1c4b
+		summarizeBy: none
+		sourceColumn: Date accessed
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date modified'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 781e6a4d-f8f7-4fac-8ee7-7725c03a50fc
+		summarizeBy: none
+		sourceColumn: Date modified
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date created'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cab272d7-5716-4d51-988b-020bd3b173d1
+		summarizeBy: none
+		sourceColumn: Date created
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Folder Path'
+		dataType: string
+		lineageTag: aa3ecdb7-bb09-4b52-9606-9fac7e4e8acd
+		summarizeBy: none
+		sourceColumn: Folder Path
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'data (2)' = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data")
+				in
+				  Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

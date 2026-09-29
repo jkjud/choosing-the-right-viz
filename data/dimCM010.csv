@@ -1,0 +1,18 @@
+cm010_id,cm010_category,case_type_id
+1,Auto tort,1
+2,Uninsured motorist,1
+3,Medical malpractice,2
+4,Product liability,2
+5,Other PI/PD/WD,2
+6,Breach of contract,3
+7,Employment,3
+8,Construction defect,3
+9,Insurance coverage,3
+10,Real property,3
+11,Wrongful eviction,3
+12,Business tort,3
+13,Collections,4
+14,Other limited civil,4
+15,Residential UD,5
+16,Commercial UD,5
+17,Small claims,6

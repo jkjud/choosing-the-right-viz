@@ -1,0 +1,11 @@
+case_group,tier,window_days,window_label,target_pct
+Unlimited civil,1,365,12 mo,0.75
+Unlimited civil,2,548,18 mo,0.85
+Unlimited civil,3,730,24 mo,1
+Limited civil,1,365,12 mo,0.9
+Limited civil,2,548,18 mo,0.98
+Limited civil,3,730,24 mo,1
+Unlawful detainer,1,30,30 d,0.9
+Unlawful detainer,2,45,45 d,1
+Small claims,1,75,75 d,0.9
+Small claims,2,95,95 d,1

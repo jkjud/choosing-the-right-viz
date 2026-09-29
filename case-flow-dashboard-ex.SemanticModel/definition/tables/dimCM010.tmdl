@@ -1,0 +1,44 @@
+table dimCM010
+	lineageTag: f09f81ad-bcec-4ba0-a1ab-f9ec8721cff3
+
+	column cm010_id
+		dataType: int64
+		formatString: 0
+		lineageTag: f4bad89a-115e-4c0f-a207-42c466871154
+		summarizeBy: sum
+		sourceColumn: cm010_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column cm010_category
+		dataType: string
+		lineageTag: 4037a34f-61c1-4e17-9076-a57a364d522d
+		summarizeBy: none
+		sourceColumn: cm010_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column case_type_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c403919-030f-44b5-8ce7-17c093c32ce4
+		summarizeBy: none
+		sourceColumn: case_type_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimCM010 = m
+		mode: import
+		source =
+				let
+				  Source = Folder.Files("C:\Users\JKent\Documents\Training\data-summit-26\data"),
+				    #"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimCM010 csv1" = Source{[#"Folder Path"="C:\Users\JKent\Documents\Training\data-summit-26\data\",Name="dimCM010.csv"]}[Content],
+				    #"Imported CSV" = Csv.Document(#"C:\Users\JKent\Documents\Training\data-summit-26\data\_dimCM010 csv1",[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Imported CSV", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"cm010_id", Int64.Type}, {"cm010_category", type text}, {"case_type_id", Int64.Type}})
+				in
+				  #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

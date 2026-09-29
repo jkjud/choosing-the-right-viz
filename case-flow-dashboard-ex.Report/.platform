@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "case-flow-dashboard-ex"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f85e4caf-6ab2-404a-985d-f8535f6bc9fe"
+  }
+}

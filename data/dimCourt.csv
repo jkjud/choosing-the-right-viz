@@ -1,0 +1,16 @@
+court_id,court_code,n_locations,peer_cluster,court_name
+1,CED,2,3,Cedar Ridge
+2,ALD,3,3,Alder
+3,BAY,3,3,Bayview
+4,COY,1,2,Coyote Hills
+5,DEL,1,2,Del Oro
+6,ELK,3,3,Elk Valley
+7,FOX,1,1,Foxglove
+8,GRA,2,3,Granite
+9,HAR,5,4,Harbor
+10,IRO,1,2,Iron Mountain
+11,JUN,3,3,Juniper
+12,KES,1,1,Kestrel
+13,LAU,3,3,Laurel
+14,MES,1,2,Mesa Verde
+15,NOP,5,4,Nopal
